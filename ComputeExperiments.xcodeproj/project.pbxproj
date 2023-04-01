@@ -14,6 +14,10 @@
 		3532E5C329D8AA680006CF9A /* ComputeExperimentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3532E5C229D8AA680006CF9A /* ComputeExperimentsTests.swift */; };
 		3532E5CD29D8AA680006CF9A /* ComputeExperimentsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3532E5CC29D8AA680006CF9A /* ComputeExperimentsUITests.swift */; };
 		3532E5CF29D8AA680006CF9A /* ComputeExperimentsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3532E5CE29D8AA680006CF9A /* ComputeExperimentsUITestsLaunchTests.swift */; };
+		35C7DCE229D8ACDC0045ED06 /* CCASettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C7DCDE29D8ACDC0045ED06 /* CCASettingsView.swift */; };
+		35C7DCE329D8ACDC0045ED06 /* CCAMetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C7DCDF29D8ACDC0045ED06 /* CCAMetalView.swift */; };
+		35C7DCE429D8ACDC0045ED06 /* CCASwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C7DCE029D8ACDC0045ED06 /* CCASwiftUIView.swift */; };
+		35C7DCE529D8ACDC0045ED06 /* CCA.metal in Sources */ = {isa = PBXBuildFile; fileRef = 35C7DCE129D8ACDC0045ED06 /* CCA.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,10 @@
 		3532E5C829D8AA680006CF9A /* ComputeExperimentsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ComputeExperimentsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3532E5CC29D8AA680006CF9A /* ComputeExperimentsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputeExperimentsUITests.swift; sourceTree = "<group>"; };
 		3532E5CE29D8AA680006CF9A /* ComputeExperimentsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputeExperimentsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		35C7DCDE29D8ACDC0045ED06 /* CCASettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCASettingsView.swift; sourceTree = "<group>"; };
+		35C7DCDF29D8ACDC0045ED06 /* CCAMetalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCAMetalView.swift; sourceTree = "<group>"; };
+		35C7DCE029D8ACDC0045ED06 /* CCASwiftUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCASwiftUIView.swift; sourceTree = "<group>"; };
+		35C7DCE129D8ACDC0045ED06 /* CCA.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = CCA.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +102,7 @@
 		3532E5B029D8AA680006CF9A /* ComputeExperiments */ = {
 			isa = PBXGroup;
 			children = (
+				35C7DCDD29D8ACA00045ED06 /* CCA_Files */,
 				3532E5B129D8AA680006CF9A /* ComputeExperimentsApp.swift */,
 				3532E5B329D8AA680006CF9A /* ContentView.swift */,
 				3532E5B529D8AA680006CF9A /* Assets.xcassets */,
@@ -125,6 +134,17 @@
 				3532E5CE29D8AA680006CF9A /* ComputeExperimentsUITestsLaunchTests.swift */,
 			);
 			path = ComputeExperimentsUITests;
+			sourceTree = "<group>";
+		};
+		35C7DCDD29D8ACA00045ED06 /* CCA_Files */ = {
+			isa = PBXGroup;
+			children = (
+				35C7DCE129D8ACDC0045ED06 /* CCA.metal */,
+				35C7DCDF29D8ACDC0045ED06 /* CCAMetalView.swift */,
+				35C7DCDE29D8ACDC0045ED06 /* CCASettingsView.swift */,
+				35C7DCE029D8ACDC0045ED06 /* CCASwiftUIView.swift */,
+			);
+			path = CCA_Files;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +279,10 @@
 			files = (
 				3532E5B429D8AA680006CF9A /* ContentView.swift in Sources */,
 				3532E5B229D8AA680006CF9A /* ComputeExperimentsApp.swift in Sources */,
+				35C7DCE429D8ACDC0045ED06 /* CCASwiftUIView.swift in Sources */,
+				35C7DCE529D8ACDC0045ED06 /* CCA.metal in Sources */,
+				35C7DCE329D8ACDC0045ED06 /* CCAMetalView.swift in Sources */,
+				35C7DCE229D8ACDC0045ED06 /* CCASettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +444,7 @@
 				DEVELOPMENT_TEAM = Y7Y7RCRWDM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Save photos to the library";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -449,6 +474,7 @@
 				DEVELOPMENT_TEAM = Y7Y7RCRWDM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Save photos to the library";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
