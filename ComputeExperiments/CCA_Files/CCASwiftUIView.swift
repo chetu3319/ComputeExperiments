@@ -9,50 +9,49 @@ import SwiftUI
 import UIKit
 import Photos
 
+// MARK: CCA View Container
+
 struct CCASwiftUIView: View {
-    @StateObject private var viewModel = CCAViewModel()
+    
+    @StateObject private var ccaDataModel = CCADataModel()
     @State private var showingShareSheet = false
     @State private var imageToShare: UIImage?
     
     var body: some View { 
         NavigationView{
+            
             VStack{
-
-                CCAMetalView(viewModel: viewModel)
+                
+                CCAMetalView(ccaDataModel: ccaDataModel)
                     .aspectRatio(contentMode: .fit)
                     .padding(.bottom)
-
-
-
+                
                 Divider();
 
-                CCASettingsView(viewModel: viewModel);
+                CCASettingsView(viewModel: ccaDataModel);
             }
             .padding(.top,10)
-            .toolbar(content: {
-                
-            })
             .navigationBarItems(trailing:
-                            HStack {
-                                Spacer()
+                                    HStack {
+                Spacer()
                 Button(action: {
-                    if let cgImage = viewModel.cgImage() {
-                                        imageToShare = UIImage(cgImage: cgImage)
-                                        showingShareSheet = true
-                                    }
+                    if let cgImage = ccaDataModel.cgImage() {
+                        imageToShare = UIImage(cgImage: cgImage)
+                        showingShareSheet = true
+                    }
                     
                 }) {
-                                    Image(systemName: "square.and.arrow.up")
-                                        .imageScale(.large)
-                                }
-                            }
-                        )
+                    Image(systemName: "square.and.arrow.up")
+                        .imageScale(.large)
+                }
+            }
+            )
             .sheet(isPresented: $showingShareSheet) {
-                            if let image = imageToShare {
-                                ShareSheet(items: [image])
-                            } else {
-                                EmptyView()
-                            }
+                if let image = imageToShare {
+                    ShareSheet(items: [image])
+                } else {
+                    EmptyView()
+                }
             }
         }
         
@@ -86,8 +85,8 @@ struct CCASwiftUIView: View {
 
     }
 
-    struct CCASwiftUIView_Previews: PreviewProvider {
-        static var previews: some View {
-            CCASwiftUIView()
-        }
+struct CCASwiftUIView_Previews: PreviewProvider {
+    static var previews: some View {
+        CCASwiftUIView()
     }
+}
