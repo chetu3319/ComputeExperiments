@@ -51,16 +51,25 @@ float4 hsb2rgb(float3 c) {
 
 
 // This function returns a color based on the input state
-float4 Color(uint state) {
+float4 Color(uint state, int count, float4 texCol) {
    
-// Calculate the saturation level by dividing the state with the total number of states
+    // Calculate the saturation level by dividing the state with the total number of states
     float hueLevel = float(state) / float(nStates);
+
+    float normalizedState = float(state) / float(nStates);
+    float normalizedCount = count / float(threshold);
 
     float3 hsb = float3(0.5, 0.9, 1.);
     
-    hsb.x =  hueLevel;
+    texCol *= 0.8;
+    hsb.x = hsb.y = hsb.z = normalizedCount;
+
+    hsb.y += 0.7;
+    hsb.x = mix(hsb.x, 0.3, 0.7);
+    texCol += hsb2rgb(hsb);
+ 
     
-    return hsb2rgb(hsb);
+    return texCol;
 
 }
 
@@ -72,7 +81,7 @@ constexpr sampler textureSampler(coord::normalized,
 kernel void CCAStepKernel(uint2 gridPosition [[thread_position_in_grid]],
                           texture2d<float> readTex [[texture(0)]],
                           texture2d<float,access::write> writeTex [[texture(1)]],
-                          texture2d<float, access::write> outputTex [[texture(2)]])
+                          texture2d<float, access::read_write> outputTex [[texture(2)]])
 {
     
     float width = readTex.get_width();
@@ -111,6 +120,6 @@ kernel void CCAStepKernel(uint2 gridPosition [[thread_position_in_grid]],
     // write the sampled grid position
     writeTex.write(stateValue, gridPosition);
 
-    float4 color = Color(stateValue);
+    float4 color = Color(stateValue, count,outputTex.read(gridPosition));
     outputTex.write(color, gridPosition);
 }
